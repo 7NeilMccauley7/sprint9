@@ -28,9 +28,9 @@ function showSumPrice(price, amountNumber) {
 
 
 /*event hogy mi történtjen ha az elemre kattintok*/ 
-
+/*
 let sendButton = document.querySelector("#orderForm > button");
-
+*/
 /*event az addEventLisener-rel. Ezzel több eseményt lehet megadni*/
 /*sendButton.addEventListener("click", function() {
     alert("Hello JS!");
@@ -41,15 +41,29 @@ let sendButton = document.querySelector("#orderForm > button");
 
 //Űrlap
 let orderForm = document.querySelector("#orderForm");
-orderForm.addEventListener("Submit", function(ev){
+orderForm.addEventListener("submit", function(ev) {
+    
     /*ez azt csinálja hogyha rákattintanak a gombra akkor le fog frissülni az oldal*/
   
     ev.preventDefault();
-    console.log( this );
-
+    
+    /*a bevitt értékeket adja vissza a console log-ban*/
+    let inputs = this.querySelectorAll("input");
+    let values = {};
+    for (let i = 0; i < inputs.length; i++) {
+        values[inputs[i].name] = inputs[i].value;
+    }
+    console.log( values );
 });
 
+/*gomb eltűntetése*/
+let alertCloseButtons = document.querySelectorAll(".close[data-dismiss='alert']");
+for (let i = 0; i < alertCloseButtons.length; i++) {
+    alertCloseButtons[i].addEventListener("click", function(ev){
+        console.log( ev );
+    });
 
+}
 
 
 
